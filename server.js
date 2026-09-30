@@ -601,6 +601,10 @@ app.post('/api/node-explain', (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 TraceMap Backend Express Server listening on http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 TraceMap Backend Express Server listening on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
